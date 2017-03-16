@@ -25,7 +25,7 @@ using namespace std;
 	}
 	void Elevador::sobe(){
 		if(andares==andar_atual){
-			cout<<"Não é possível subir mais um andar, já estamos no último"<<endl;
+			cout<<"Não é possível subir mais um andar, já estamos no último andar"<<endl;
 		}
 		else{
 			andar_atual=andar_atual+1;
@@ -33,7 +33,7 @@ using namespace std;
 	}
 	void Elevador::desce(){
 		if(andar_atual==0){
-			cout<<"Não é possível descer mais, já estamos no último andar"<<endl;
+			cout<<"Não é possível descer mais, já estamos no primeiro andar"<<endl;
 		}
 		else{
 			andar_atual=andar_atual-1;
