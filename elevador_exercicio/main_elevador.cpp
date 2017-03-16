@@ -4,21 +4,22 @@
 using namespace std;
 int main(void){
 	Elevador el;
-	int _capacidade,_ocupantes,_andar_atual,_andares;
+	int _capacidade,_andares;
 	string var, resp;
-	cout<<"Informe o número de andares do prédio e a capacidade do elevador:"<<endl
+	cout<<"Informe o número de andares do prédio e a capacidade do elevador:"<<endl;
 	cin>>_andares;
 	cin>>_capacidade;
 	el.inicializa(_capacidade,_andares);
+	var="sim";
 	do{
-		cout<<"Há alguém querendo entrar?"<<endl:
+		cout<<"Há alguém querendo entrar?"<<endl;
 		cin>>resp;
 		if(resp=="sim"){
 			el.entra();
 		}
 		cout<<"Você deseja subir ou descer?"<<endl;
 		cin>>resp;
-		if(resp=="sim"){
+		if(resp=="subir"){
 			el.sobe();
 		}
 		else{
@@ -33,6 +34,6 @@ int main(void){
 		cout<<"Total de andares do prédio:"<<el.get_andares()<<" Andar atual:"<<el.get_andar_atual()<<endl;
 		cout<<"Deseja continuar?"<<endl;
 		cin>>var;
-	}while(var=="sim")
+	}while(var=="sim");
 	return 0;
 }

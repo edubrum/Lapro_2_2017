@@ -8,10 +8,10 @@ class Elevador{
 	public:
 		Elevador();
 		void inicializa(int _capacidade,int _andares);
-		void entra(int _ocupantes,int _capacidade);
-		void sai(int _ocupantes);
-		void sobe(int _andares,int _andar_atual);
-		void desce(int _andar_atual);
+		void entra();
+		void sai();
+		void sobe();
+		void desce();
 		int get_andar_atual();
 		int get_ocupantes();
 		int get_capacidade();
