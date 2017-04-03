@@ -5,6 +5,7 @@
 #include "Ponto.h"
 
 class Linha{
+    // Ponto Pi, Pf;
     int Pi, Pf;
     Ponto *PPi, *PPf;
 
