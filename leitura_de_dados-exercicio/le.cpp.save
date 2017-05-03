@@ -1,4 +1,3 @@
-
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -18,29 +17,24 @@ int main()
   // cria um objeto da classe  'ifstream'
   ifstream arquivoDeEntrada;
   //char S[100];
-  string S;
+  //string S;
   
   // Abre um arquivo para leitura 
   arquivoDeEntrada.open ("Dados.txt", ios::in);
-  
+
   if (!arquivoDeEntrada)
   {
       cout << "Problemas na abertura do arquivo" << endl;
       exit(1);
   }
-  
-  
      // o uso de >> na leitura de arquivos texto
-     // usa o espaço em branco e o ENTER como 
+     // usa o espaço em branco e o ENTER como
      // marcadores de fim da entrada.
-     
 //  arquivoDeEntrada >> S;  // lê uma palavra
 //  cout << S;
 //  arquivoDeEntrada >> S;
 //  cout << S;
 //  arquivoDeEntrada.close();
-    
-   
 	float TotalGasto=0.00;
    while (!arquivoDeEntrada.eof())
    {
