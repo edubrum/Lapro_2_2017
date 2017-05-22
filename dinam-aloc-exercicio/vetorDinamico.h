@@ -5,33 +5,30 @@
 using namespace std;
 class VetorDinamico{
 public:
-        int dado,*vet,,*aux,i,j;
-	VetorDinamico(int a){
-	i=0;dado=0;j=a;vet=(int*)malloc(sizeof(int)*a);
+        int *vet,tam,i;
+	VetorDinamico(int _tam){
+	i=0;tam=_tam;vet=(int*)malloc(sizeof(int)*_tam);
 	}
 	void adiciona(int dado){
-		for(i=0;i<=j;i++){
+	int *aux;
+		if(i<tam)
+			vet[i]=dado;
+		else{
+			aux=(int*)malloc(sizeof(int)*(tam+4));
+			for(i=0;i<tam;i++)
+				aux[i]=vet[i];
+			free(vet);
+			tam=tam+4;
+			vet=aux;
 			vet[i]=dado;
 		}
-		if(j==i){
-			aux=(int*)malloc(sizeof(int)*j);
-			for(i=0;i<=j;i++){
-				aux[i]=vet[i];
-			}
-			free(vet);
-			vet=(int*)malloc(sizeof(int)*(i+4));
-			for(i=0;i<=j;i++){
-				vet[i]=aux[i];
-			}
-			j=sizeof(vet);
-			free(aux);
-		}
+		i=i+1;
 	}
 	int qtdDados(){
-		return sizeof(vet);
+		return i;
 	}
 	int getDado(int i){
-		 return this->vet[i];
+		 return vet[i];
 	}
 	// Métodos a serem criados
         // - construtora: deve alocar o vetor com um tamnho inicial, passado

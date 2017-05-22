@@ -1,4 +1,4 @@
-#include"VetorDinamico.h"
+#include"vetorDinamico.h"
 #include<iostream>
 using namespace std;
 int main(void)
