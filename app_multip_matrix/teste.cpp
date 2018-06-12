@@ -241,10 +241,10 @@ int main(void){
 		for(j=0;j<2;j++){
 			if(i==0){
 				A_inv[i][0]=A[1][1];
-				A_inv[i][1]= -(A[j][i]);
+				A_inv[i][1]= -(A[1][i]);
 			}
 			else{
-				A_inv[i][0]= -(A[j][i]);
+				A_inv[i][0]= -(A[0][i]);
 				A_inv[i][1]=A[0][0];
 			}
 		}
