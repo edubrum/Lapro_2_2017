@@ -6,12 +6,12 @@ void flush(){
 		cout<<endl;
 }	
 int main(void){
-	int i,j,l,c,n_elem;
-	float **X,**XT,**XTX,**XTX_inv,*XTY,*B,*Y,entra_x,entra_y;
+	int i,j,n_elem;
+	float **X,**XT,**XTX,detXTX,**XTX_inv,*XTY,*B,*Y,entra_x,entra_y;
 	flush();
 	cout<<"Insira o número de pares ordenados que "<<endl<<"deseja inserir e obter o grafico: ";
 	cin>>n_elem;
-	i=j=l=c=0;
+	i=j=0;
 	//criação das matriz por alocação dinamica
 	X = 	new float*[n_elem];
 	XT= 	new float*[2];
@@ -51,9 +51,36 @@ int main(void){
 				Y[i]=entra_y;
 			}
 		}
-	}	
-	//printando as matrizes zeradas
-	cout<<endl<<" Com os dados que você informou, foram criadas as matrizes:"<<endl<<endl<<" X =";
+	}
+	flush();	
+	//printando aos pontos e as matrizes
+	cout<<endl<< "Com os dados que informou foram criados os pontos:"<<endl;
+	for(i=0;i< 2;i++){
+		if(i==0)
+			cout<<endl<<" x =";
+		else
+			cout<<" Y =";
+		for(j=0;j< n_elem;j++){
+			if((j==0)&&(i==0))
+				cout<<"|"<<X[j][1]<<" ";
+			else{
+				if((j==0)&&(i==1))
+					cout<<"|"<<Y[j]<<" ";
+				else{
+					if((i==0)&&(j!=(n_elem -1)))
+						cout<<X[j][1]<<" ";
+					if((i==1)&&(j!=(n_elem -1)))
+						cout<<Y[j]<<" ";
+					if((i==0)&&(j==(n_elem -1)))
+						cout<<X[j][1]<<"|"<<endl;
+					if((i==1)&&(j==(n_elem -1)))
+						cout<<Y[j]<<"|";
+				}
+			}			
+		}
+		cout<<endl;
+	}
+	cout<<endl<<" Com os pontos infromados, foram criadas as matrizes:"<<endl<<endl<<" X =";
 	for(i=0;i< n_elem;i++){
 		for(j=0;j< 2;j++){
 			if((j==0)&&(i==0))
@@ -120,17 +147,18 @@ int main(void){
 			}
 		}
 		cout<<endl;
-	}	
+	}
+	detXTX = XTX[0][0]*XTX[1][1]-(XTX[0][1]*XTX[1][0]);
 	//Calculando na inversa de XTX:
 	for(i=0;i<2;i++){
 		for(j=0;j<2;j++){
 			if(i==0){
-				XTX_inv[i][0]=XTX[1][1];
-				XTX_inv[i][1]= -(XTX[1][i]);
+				XTX_inv[i][0]=XTX[1][1]/detXTX;
+				XTX_inv[i][1]= -(XTX[1][i])/detXTX;
 			}
 			else{
-				XTX_inv[i][0]= -(XTX[0][i]);
-				XTX_inv[i][1]=XTX[0][0];
+				XTX_inv[i][0]= -(XTX[0][i])/detXTX;
+				XTX_inv[i][1]=XTX[0][0]/detXTX;
 			}
 		}
 	}
@@ -182,6 +210,7 @@ int main(void){
 			cout<<"    |"<<B[i]<<"|";
 		cout<<endl;		
 	}
+	cout<<endl<<" A partir dos pontos iniciais, obteve-se a reta:"<<endl<<endl<<"		"<<"Y(x) = "<<B[0]<<" +("<<B[1]<<")x"<<endl<<endl;
 	for (i = 0; i < 2; i++){
 		delete [] XT[i];
 		delete [] XTX[i];
