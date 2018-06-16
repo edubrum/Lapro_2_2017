@@ -210,7 +210,15 @@ int main(void){
 			cout<<"    |"<<B[i]<<"|";
 		cout<<endl;		
 	}
-	cout<<endl<<" A partir dos pontos iniciais, obteve-se a reta:"<<endl<<endl<<"		"<<"Y(x) = "<<B[0]<<" +("<<B[1]<<")x"<<endl<<endl;
+	cout<<endl<<" A partir dos pontos iniciais, obteve-se a reta:"<<endl<<endl<<"		"<<"Y(x) = ";
+	if((B[1]>0)&&(B[0]!=0))
+		cout<<"Y(x) = "<<B[0]<<" + "<<B[1]<<"x"<<endl<<endl;
+	if((B[1]>0)&&(B[0]==0))
+		cout<<" +"<<B[1]<<"x"<<endl<<endl;
+	if((B[1]<0)&&(B[0]!=0))
+		cout<<"Y(x) = "<<B[0]<<" "<<B[1]<<"x"<<endl<<endl;
+	if((B[1]<0)&&(B[0]==0))
+		cout<<" "<<B[1]<<"x"<<endl<<endl;
 	for (i = 0; i < 2; i++){
 		delete [] XT[i];
 		delete [] XTX[i];
